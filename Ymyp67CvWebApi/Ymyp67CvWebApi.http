@@ -1,0 +1,6 @@
+@Ymyp67CvWebApi_HostAddress = http://localhost:5218
+
+GET {{Ymyp67CvWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
