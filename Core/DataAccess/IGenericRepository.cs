@@ -10,7 +10,7 @@ namespace Core.DataAccess
 {
     public interface IGenericRepository <T> where T : class, IEntity, new()
     {
-        Task<T> GetAsync(Expression<Func<T,bool>> filter);
+        Task<T?> GetAsync(Expression<Func<T,bool>> filter);
 
         //IQueryable<T> GetAll();
         IQueryable<T> GetAll(Expression<Func<T, bool>> filter = null);  

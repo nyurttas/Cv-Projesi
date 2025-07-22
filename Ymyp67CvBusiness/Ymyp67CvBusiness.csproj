@@ -11,4 +11,9 @@
     <Folder Include="Concrete\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Ymyp67CvDataAccess\Ymyp67CvDataAccess.csproj" />
+  </ItemGroup>
+
 </Project>
