@@ -10,7 +10,7 @@ using Ymyp67CvEntity.Concrete;
 
 namespace Ymyp67CvDataAccess.Concrete
 {
-    public sealed class EfExperienceRepository : EfGenericRepository<Experience, Ymyp67CvProjectDbContext>, IExperienceRepository
+    public class EfExperienceRepository : EfGenericRepository<Experience, Ymyp67CvProjectDbContext>, IExperienceRepository
     {
         public EfExperienceRepository(Ymyp67CvProjectDbContext context) : base(context)
         {

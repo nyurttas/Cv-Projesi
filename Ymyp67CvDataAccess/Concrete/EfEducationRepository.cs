@@ -10,7 +10,7 @@ using Ymyp67CvEntity.Concrete;
 
 namespace Ymyp67CvDataAccess.Concrete
 {
-    public sealed class EfEducationRepository : EfGenericRepository<Education, Ymyp67CvProjectDbContext>, IEducationRepository
+    public  class EfEducationRepository : EfGenericRepository<Education, Ymyp67CvProjectDbContext>, IEducationRepository
     {
         public EfEducationRepository(Ymyp67CvProjectDbContext context) : base(context)
         {

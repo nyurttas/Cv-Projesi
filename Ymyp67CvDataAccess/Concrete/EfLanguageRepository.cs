@@ -10,9 +10,9 @@ using Ymyp67CvEntity.Concrete;
 
 namespace Ymyp67CvDataAccess.Concrete
 {
-    public class EfContactRepository : EfGenericRepository<Contact, Ymyp67CvProjectDbContext>, IContactRepository
+    public class EfLanguageRepository : EfGenericRepository<Language, Ymyp67CvProjectDbContext>, ILanguageRepository
     {
-        public EfContactRepository(Ymyp67CvProjectDbContext context) : base(context)
+        public EfLanguageRepository(Ymyp67CvProjectDbContext context) : base(context)
         {
         }
     }

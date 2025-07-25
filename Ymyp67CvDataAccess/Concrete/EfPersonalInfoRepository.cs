@@ -10,9 +10,9 @@ using Ymyp67CvEntity.Concrete;
 
 namespace Ymyp67CvDataAccess.Concrete
 {
-    public class EfContactRepository : EfGenericRepository<Contact, Ymyp67CvProjectDbContext>, IContactRepository
+    public class EfPersonalInfoRepository : EfGenericRepository<PersonalInfo, Ymyp67CvProjectDbContext>, IPersonalInfoRepository
     {
-        public EfContactRepository(Ymyp67CvProjectDbContext context) : base(context)
+        public EfPersonalInfoRepository(Ymyp67CvProjectDbContext context) : base(context)
         {
         }
     }

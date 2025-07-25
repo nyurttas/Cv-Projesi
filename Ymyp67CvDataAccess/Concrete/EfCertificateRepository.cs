@@ -10,7 +10,7 @@ using Ymyp67CvEntity.Concrete;
 
 namespace Ymyp67CvDataAccess.Concrete
 {
-    public sealed class EfCertificateRepository : EfGenericRepository<Certificate, Ymyp67CvProjectDbContext>, ICertificateRepository
+    public class EfCertificateRepository : EfGenericRepository<Certificate, Ymyp67CvProjectDbContext>, ICertificateRepository
     {
         public EfCertificateRepository(Ymyp67CvProjectDbContext context) : base(context)
         {

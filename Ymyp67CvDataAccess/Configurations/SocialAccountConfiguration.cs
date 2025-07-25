@@ -13,10 +13,10 @@ namespace Ymyp67CvEntity.Concrete
     {
         public void Configure(EntityTypeBuilder<SocialAccount> builder)
         {
-           builder.Property(s => s.Name).HasMaxLength(20).IsRequired();
-           builder.Property(s => s.WebUrl).HasMaxLength(30).IsRequired();
-           builder.Property(s => s.UserName).HasMaxLength(20).IsRequired();
-           builder.Property(s => s.Icon).HasMaxLength(30).IsRequired();
+            builder.Property(s => s.Name).HasMaxLength(20).IsRequired();
+            builder.Property(s => s.WebUrl).HasMaxLength(30).IsRequired();
+            builder.Property(s => s.UserName).HasMaxLength(20).IsRequired();
+            builder.Property(s => s.Icon).HasMaxLength(30).IsRequired();
 
 
         }
