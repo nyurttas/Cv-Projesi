@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Ymyp67CvBusiness\Ymyp67CvBusiness.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
