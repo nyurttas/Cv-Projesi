@@ -9,6 +9,6 @@ using Ymyp67CvEntity.Dtos.PersonalInfo;
 
 namespace Ymyp67CvBusiness.Abstract;
 
-public interface IPersonalInfoService : IGenericService<PersonalInfo, PersonalInfoResponseDto, PersonalInfoCreateRequestDto, PersonalInfoUpdateReQuestDto, PersonalInfoDetailResponseDto>
+public interface IPersonalInfoService : IGenericService<PersonalInfo, PersonalInfoResponseDto, PersonalInfoCreateRequestDto, PersonalInfoUpdateRequestDto, PersonalInfoDetailResponseDto>
 {
 }

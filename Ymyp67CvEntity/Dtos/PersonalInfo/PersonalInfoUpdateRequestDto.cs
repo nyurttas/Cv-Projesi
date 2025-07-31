@@ -1,8 +1,8 @@
 ﻿using Core.Entities;
 
-namespace Ymyp67CvEntity.Dtos.PersonalInfo
-{
-    public sealed record PersonalInfoUpdateReQuestDto(
+namespace Ymyp67CvEntity.Dtos.PersonalInfo;
+
+    public sealed record PersonalInfoUpdateRequestDto(
       Guid Id,
     string FirstName,
     string LastName,
@@ -17,4 +17,4 @@ namespace Ymyp67CvEntity.Dtos.PersonalInfo
     bool IsDeleted
  ) : IUpdateDto;
 
-}
+

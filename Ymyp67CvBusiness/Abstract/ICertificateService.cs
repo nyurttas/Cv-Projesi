@@ -15,5 +15,5 @@ namespace Ymyp67CvBusiness.Abstract;
 
    public interface ICertificateService : IGenericService<Certificate, CertificateResponseDto, CertificateCreateRequestDto, CertificateUpdateRequestDto, CertificateDetailResponseDto>
 {
-    Task<IDataResult<IEnumerable<CertificateResponseDto>>> GetCertificatesByOrganisationAsync();
+    Task<IDataResult<IEnumerable<CertificateResponseDto>>> GetCertificatesByOrganisationAsync(string organisation);
 }
