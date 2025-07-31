@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Core.Business;
 using Core.Utilities.Results;
 using Ymyp67CvEntity.Concrete;
+using Ymyp67CvEntity.Dtos.Language;
 
 namespace Ymyp67CvBusiness.Abstract
 {
-    public interface ILanguageService : IGenericService<Language>
+    public interface ILanguageService : IGenericService<Language, LanguageResponseDto, LanguageCreateRequestDto, LanguageUpdateRequestDto, LanguageDetailResponseDto>
     {
-       Task<IDataResult<IEnumerable<Language>>> GetLanguageGraterLevelAsync(byte level);
-      
+        Task<IDataResult<IEnumerable<LanguageResponseDto>>> GetLanguagesGraterLevelAsync(byte level);
     }
 }

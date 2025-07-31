@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using Core.Business;
 using Core.Utilities.Results;
 using Ymyp67CvEntity.Concrete;
+using Ymyp67CvEntity.Dtos.About;
+using Ymyp67CvEntity.Dtos.Certificate;
 
-namespace Ymyp67CvBusiness.Abstract
+namespace Ymyp67CvBusiness.Abstract;
+
+
+
+   public interface ICertificateService : IGenericService<Certificate, CertificateResponseDto, CertificateCreateRequestDto, CertificateUpdateRequestDto, CertificateDetailResponseDto>
 {
-    public interface ICertificateService : IGenericService<Certificate>
-    {
-        // Burada IGenericService<T> interface'ini implement eden Certificate entity'si için özel metotlar ekleyebiliriz.
-        // Örneğin, belirli bir sertifikayı kuruma göre filtrelemek gibi.
-        Task<IDataResult<IEnumerable<Certificate>>> GetCertificatesByOrganisationAsync();
-    }
+    Task<IDataResult<IEnumerable<CertificateResponseDto>>> GetCertificatesByOrganisationAsync();
 }

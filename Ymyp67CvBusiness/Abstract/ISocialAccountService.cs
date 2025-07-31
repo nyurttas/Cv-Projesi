@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 using Core.Business;
 using Core.Utilities.Results;
 using Ymyp67CvEntity.Concrete;
+using Ymyp67CvEntity.Dtos.SocialAccount;
 
 namespace Ymyp67CvBusiness.Abstract
 {
-    public interface ISocialAccountService : IGenericService<SocialAccount>
+    public interface ISocialAccountService : IGenericService<SocialAccount, SocialAccountResponseDto, SocialAccountCreateRequestDto, SocialAccountUpdateRequestDto, SocialAccountDetailResponseDto>
     {
-        // Burada IGenericService<T> interface'ini implement eden SocialAccount entity'si için özel metotlar ekleyebiliriz.
-        // Örneğin, belirli bir sosyal medya platformuna göre filtreleme gibi.
-        Task<IDataResult<SocialAccount>> GetSocialAccountByNameAsync();
-        Task<IDataResult<IEnumerable<SocialAccount>>> GetSocialAccountByUserNameAsync();
+        Task<IDataResult<SocialAccountResponseDto>> GetSocialAccountByNameAsync();
+        Task<IDataResult<IEnumerable<SocialAccountResponseDto>>> GetSocialAccountsByUserNameAsync();
     }
 }

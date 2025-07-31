@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
+    <ProjectReference Include="..\Core\Core.csproj" />
+    <ProjectReference Include="..\Ymyp67CvDataAccess\Ymyp67CvDataAccess.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
-    <ProjectReference Include="..\Ymyp67CvDataAccess\Ymyp67CvDataAccess.csproj" />
+    <Folder Include="Concrete\" />
   </ItemGroup>
 
 </Project>

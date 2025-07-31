@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 using Core.Business;
 using Core.Utilities.Results;
 using Ymyp67CvEntity.Concrete;
+using Ymyp67CvEntity.Dtos.Skill;
 
 namespace Ymyp67CvBusiness.Abstract
 {
-    public interface ISkillService : IGenericService<Skill>
+    public interface ISkillService : IGenericService<Skill, SkillResponseDto, SkillCreateRequestDto, SkillUpdateRequestDto, SkillDetailResponseDto>
     {
-     
-        Task<IDataResult<IEnumerable<Skill>>> GetProgramLanguagesAsync(bool program);
-        Task<IDataResult<IEnumerable<Skill>>> GetProgramToolsAsync(bool tools);
-
-
+        Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsProgramLanguagesAsync(bool program);
+        Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsToolsAsync(bool tools);
     }
 }

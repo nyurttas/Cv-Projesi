@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 using Core.Business;
 using Core.Utilities.Results;
 using Ymyp67CvEntity.Concrete;
+using Ymyp67CvEntity.Dtos.Contact;
 
-namespace Ymyp67CvBusiness.Abstract
+namespace Ymyp67CvBusiness.Abstract;
+
+public interface IContactService : IGenericService<Contact, ContactResponseDto, ContactCreateRequestDto, ContactUpdateRequestDto, ContactDetailResponseDto>
 {
-    public interface IContactService : IGenericService<Contact>
-    {
-        // Burada IGenericService<T> interface'ini implement eden Contact entity'si için özel metotlar ekleyebiliriz.
-        // Örneğin, belirli bir iletişim bilgilerini şehire göre filtrelemek gibi.
-        Task<IDataResult<IEnumerable<Contact>>> GetContactListByCityAsync();
-    }
+    Task<IDataResult<IEnumerable<ContactResponseDto>>> GetContactListByCityAsync();
 }
