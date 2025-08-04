@@ -7,6 +7,7 @@ using Core.DataAccess;
 using Ymyp67CvDataAccess.Abstract;
 using Ymyp67CvDataAccess.Contexts;
 using Ymyp67CvEntity.Concrete;
+using Ymyp67CvProject.DataAccess.Abstract;
 
 namespace Ymyp67CvDataAccess.Concrete
 {

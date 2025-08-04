@@ -12,6 +12,7 @@ using Ymyp67CvBusiness.Constants;
 using Ymyp67CvDataAccess.Abstract;
 using Ymyp67CvEntity.Concrete;
 using Ymyp67CvEntity.Dtos.About;
+using Ymyp67CvProject.DataAccess.Abstract;
 
 namespace Ymyp67CvBusiness.Concrete;
 
@@ -94,11 +95,11 @@ public class AboutManager : IAboutService
             var about = await _aboutRepository.GetAsync(a => a.Id == id);
             if (about == null)
             {
-                return new ErrorDataResult<AboutResponseDto>("About not found");
+                return new ErrorDataResult<AboutResponseDto>(ResultMessages.ErrorAboutGet);
             }
 
             var response = _mapper.Map<AboutResponseDto>(about);
-            return new SuccessDataResult<AboutResponseDto>(response, ResultMessages.SuccessAboutGet);
+            return new SuccessDataResult<AboutResponseDto>(response, ResultMessages.SuccessGet);
         }
         catch (Exception e)
         {
@@ -110,14 +111,14 @@ public class AboutManager : IAboutService
     {
         try
         {
-            var abouts = await _aboutRepository.GetAll(a => !a.IsDeleted).ToListAsync();
+            var abouts = await _aboutRepository.GetAll(a => !a.IsDeleted).OrderBy(a => a.Order).ToListAsync();
             if (abouts is null)
             {
-                return new ErrorDataResult<IEnumerable<AboutResponseDto>>(ResultMessages.ErrorListed);
+                return new ErrorDataResult<IEnumerable<AboutResponseDto>>(ResultMessages.ErrorAboutListed);
             }
 
             var dtos = _mapper.Map<IEnumerable<AboutResponseDto>>(abouts);
-            return new SuccessDataResult<IEnumerable<AboutResponseDto>>(dtos, ResultMessages.SuccessAboutListed);
+            return new SuccessDataResult<IEnumerable<AboutResponseDto>>(dtos, ResultMessages.SuccessListed);
         }
         catch (Exception e)
         {

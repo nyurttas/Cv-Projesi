@@ -16,7 +16,6 @@ using Ymyp67CvEntity.Dtos.Certificate;
 namespace Ymyp67CvBusiness.Concrete
 {
 
-
     public class CertificateManager : ICertificateService
     {
         private readonly ICertificateRepository _certificateRepository;
@@ -45,25 +44,42 @@ namespace Ymyp67CvBusiness.Concrete
             }
         }
 
-        public async Task<IDataResult<IEnumerable<CertificateResponseDto>>> GetAllAsync()
+        public async Task<IResult> UpdateAsync(CertificateUpdateRequestDto dto)
         {
             try
             {
-                var certificates = await _certificateRepository.GetAll(c=> !c.IsDeleted).ToListAsync();
-                if (certificates == null)
-                {
-                    return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(ResultMessages.ErrorListed);
-                }
-                var dtos = _mapper.Map<IEnumerable<CertificateResponseDto>>(certificates);
-                return new SuccessDataResult<IEnumerable<CertificateResponseDto>>(dtos, ResultMessages.SuccessListed);
-
+                var certificate = _mapper.Map<Certificate>(dto);
+                certificate.UpdatedAt = DateTime.Now;
+                _certificateRepository.Update(certificate);
+                await _unitOfWork.CommitAsync();
+                return new SuccessResult(ResultMessages.SuccessUpdated);
             }
             catch (Exception e)
             {
-
-            return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(e.Message);
+                return new ErrorResult(e.Message + " " + ResultMessages.ErrorUpdated);
             }
-           
+        }
+
+        public async Task<IResult> RemoveAsync(Guid id)
+        {
+            try
+            {
+                var certificate = await _certificateRepository.GetAsync(c => c.Id == id);
+                if (certificate == null)
+                {
+                    return new ErrorResult(ResultMessages.ErrorGet);
+                }
+                certificate.UpdatedAt = DateTime.Now;
+                certificate.IsDeleted = true;
+                certificate.IsActive = false;
+                _certificateRepository.Update(certificate);
+                await _unitOfWork.CommitAsync();
+                return new SuccessResult(ResultMessages.SuccessDeleted);
+            }
+            catch (Exception e)
+            {
+                return new ErrorResult(e.Message);
+            }
         }
 
         public async Task<IDataResult<CertificateResponseDto>> GetByIdAsync(Guid id)
@@ -85,66 +101,41 @@ namespace Ymyp67CvBusiness.Concrete
             }
         }
 
-        public async Task<IDataResult<IEnumerable<CertificateResponseDto>>> GetCertificatesByOrganisationAsync(string organisation)
+        public async Task<IDataResult<IEnumerable<CertificateResponseDto>>> GetAllAsync()
         {
             try
             {
-            var certificates = await _certificateRepository
-                .GetAll(c => !c.IsDeleted && c.Organisation == organisation )
-                .ToListAsync();
-                if (certificates == null )
+                var certificates = await _certificateRepository.GetAll(c => !c.IsDeleted).ToListAsync();
+                if (certificates == null)
                 {
                     return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(ResultMessages.ErrorListed);
                 }
+
                 var dtos = _mapper.Map<IEnumerable<CertificateResponseDto>>(certificates);
                 return new SuccessDataResult<IEnumerable<CertificateResponseDto>>(dtos, ResultMessages.SuccessListed);
             }
             catch (Exception e)
             {
-
-               return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(e.Message + " " + ResultMessages.ErrorListed);
+                return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(e.Message);
             }
         }
 
-        public async Task<IResult> RemoveAsync(Guid id)
+        public async Task<IDataResult<IEnumerable<CertificateResponseDto>>> GetCertificatesByOrganisationAsync(string organisation)
         {
             try
             {
-                var certificate = await _certificateRepository.GetAsync(x => x.Id == id);
-                if (certificate == null)
+                var certificates = await _certificateRepository.GetAll(c => !c.IsDeleted && c.Organisation == organisation).ToListAsync();
+                if (certificates == null)
                 {
-                    return new ErrorResult(ResultMessages.ErrorGet);
-
+                    return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(ResultMessages.ErrorListed);
                 }
-                certificate.UpdatedAt = DateTime.Now;
-                certificate.IsDeleted = true;
-                certificate.IsActive = false;
-                _certificateRepository.Update(certificate);
-                await _unitOfWork.CommitAsync();
-                return new SuccessResult(ResultMessages.SuccessDeleted);
-            }
-            catch (Exception)
-            {
 
-               return new ErrorResult(ResultMessages.ErrorDeleted);
-            }
-        }
-
-        public async Task<IResult> UpdateAsync(CertificateUpdateRequestDto dto)
-        {
-            try
-            {
-                var certificate = _mapper.Map<Certificate>(dto);
-                certificate.UpdatedAt = DateTime.Now;
-                _certificateRepository.Update(certificate);
-                await _unitOfWork.CommitAsync();
-                return new SuccessResult(ResultMessages.SuccessUpdated);
-
+                var dtos = _mapper.Map<IEnumerable<CertificateResponseDto>>(certificates);
+                return new SuccessDataResult<IEnumerable<CertificateResponseDto>>(dtos, ResultMessages.SuccessListed);
             }
             catch (Exception e)
             {
-
-               return new ErrorResult(e.Message + " "+ ResultMessages.ErrorUpdated);
+                return new ErrorDataResult<IEnumerable<CertificateResponseDto>>(e.Message);
             }
         }
     }
