@@ -13,6 +13,6 @@ namespace Ymyp67CvBusiness.Abstract
     public interface ISkillService : IGenericService<Skill, SkillResponseDto, SkillCreateRequestDto, SkillUpdateRequestDto, SkillDetailResponseDto>
     {
         Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsProgramLanguagesAsync();
-        Task<IDataResult<IEnumerable<SkillResponseDto>>> GetSkillsToolsAsync();
+        Task<IDataResult<IEnumerable<SkillResponseDto>>> GetWorkflowsAsync();
     }
 }

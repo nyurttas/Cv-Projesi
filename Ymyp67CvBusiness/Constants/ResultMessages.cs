@@ -35,6 +35,9 @@ namespace Ymyp67CvBusiness.Constants
         public static string ErrorListed => "Bilgiler listelenemedi.";
         public static string ErrorGet => "Bilgi getirilemedi.";
 
+        public static string IsTrue = "Evet";
+        public static string IsFalse = "Hayır";
+
 
 
     }

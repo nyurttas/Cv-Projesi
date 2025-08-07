@@ -10,10 +10,11 @@ namespace Ymyp67CvEntity.Dtos.Education
     public sealed record EducationResponseDto(
         Guid Id,
         string School,
+        string Department,
         string Section,
         decimal GPA,
         string Grade,
-        string Organisation,
+        
         DateTime StartDate,
         DateTime? EndDate
     ) : IResponseDto;

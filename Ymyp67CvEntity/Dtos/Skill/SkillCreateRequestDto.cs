@@ -3,8 +3,8 @@
 namespace Ymyp67CvEntity.Dtos.Skill
 {
     public sealed record SkillCreateRequestDto(
-    string Title,
-    string Icon,
-    bool IsProgramLanguageAndTool
-) : ICreateDto;
+       string Title,
+       string Icon,
+       bool IsProgramLanguageAndTool
+   ) : ICreateDto;
 }

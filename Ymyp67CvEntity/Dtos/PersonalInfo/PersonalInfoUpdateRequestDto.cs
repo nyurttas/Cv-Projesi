@@ -3,7 +3,7 @@
 namespace Ymyp67CvEntity.Dtos.PersonalInfo;
 
     public sealed record PersonalInfoUpdateRequestDto(
-      Guid Id,
+     Guid Id,
     string FirstName,
     string LastName,
     string ImageUrl,
@@ -15,6 +15,6 @@ namespace Ymyp67CvEntity.Dtos.PersonalInfo;
     string Nationality,
     bool IsActive,
     bool IsDeleted
- ) : IUpdateDto;
+) : IUpdateDto;
 
 

@@ -8,9 +8,9 @@ using Core.Entities;
 namespace Ymyp67CvEntity.Dtos.Skill
 {
     public sealed record SkillResponseDto(
-        Guid Id,
-        string Title,
-        string Icon,
-       bool IsPrgramLanguageAndTool
+     Guid Id,
+    string Title,
+    string Icon,
+    bool IsProgramLanguageAndTool
     ) : IResponseDto;
 }

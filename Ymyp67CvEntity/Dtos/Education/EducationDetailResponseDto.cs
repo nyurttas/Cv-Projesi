@@ -5,10 +5,11 @@ namespace Ymyp67CvEntity.Dtos.Education
     public sealed record EducationDetailResponseDto(
       Guid Id,
       string School,
+      string Department,
       string Section,
       decimal GPA,
       string Grade,
-      string Organisation,
+      
       DateTime StartDate,
       DateTime? EndDate,
         bool IsActive,

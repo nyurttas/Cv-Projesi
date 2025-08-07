@@ -148,10 +148,10 @@ namespace Ymyp67CvBusiness.Concrete
                 var education = await _educationRepository.AnyAsync(e => e.EndDate == null);
                 if (!education)
                 {
-                    return new SuccessResult(ResultMessages.ErrorGet);
+                    return new SuccessResult(ResultMessages.IsFalse);
                 }
 
-                return new SuccessResult(ResultMessages.SuccessGet);
+                return new SuccessResult(ResultMessages.IsTrue);
             }
             catch (Exception e)
             {
